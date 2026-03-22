@@ -4,7 +4,10 @@ import { X } from "lucide-react";
 import { headerData } from "@/constants/data";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import path from "path";
+// import path from "path";
+import SocialMedia from "./SocialMedia";
+import { useOutsideClick } from "@/hooks";
+// import { useOutsideClick } from "@/hooks";
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
@@ -12,11 +15,17 @@ interface SidebarProps {
 
 const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
   const pathName = usePathname();
+
+  const sidebarRef = useOutsideClick<HTMLDivElement>(onClose);
+
   return (
     <div
       className={`fixed inset-y-0 h-screen left-0 z-50 w-full text-white/80 bg-black/50 shadow-xl ${isOpen ? "translate-x-0" : "-translate-x-full"} hoverEffect`}
     >
-      <div className="min-w-72 max-w-96 bg-black h-screen p-10 border-r border-r-shop_light_green ">
+      <div
+        ref={sidebarRef}
+        className="min-w-72 max-w-96 bg-black h-screen p-10 border-r border-r-shop_light_green "
+      >
         <div className="flex items-center justify-between gap-5">
           <Logo className="text-white" spanDesign="group-hover:text-white" />
           <button
@@ -37,6 +46,7 @@ const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
             </Link>
           ))}
         </div>
+        <SocialMedia />
       </div>
     </div>
   );
