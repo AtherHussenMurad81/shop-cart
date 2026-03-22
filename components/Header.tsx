@@ -5,19 +5,25 @@ import HeaderMenu from "./HeaderMenu";
 import SearchBar from "./SearchBar";
 import CartIcon from "./CartIcon";
 import FavoriteButton from "./FavoriteButton";
+import { SignIn } from "./SignIn";
+import MobileMenu from "./MobileMenu";
 
 const Header = () => {
   return (
     <header className="bg-white py-5 border-b border-b-black/20">
-      <Container className="flex items-center justify-between">
+      <Container className="flex items-center gap-2.5 justify-start">
         {/* Logo */}
-        <Logo></Logo>
+        <div className="w-auto md:w-1/3 flex items-center justify-start gap-2.5 md:gap-0">
+          <MobileMenu />
+          <Logo></Logo>
+        </div>
         {/* navbtn */}
         <HeaderMenu></HeaderMenu>
         <div className="flex w-auto md:1/3 items-center justify-end gap-5">
           <SearchBar />
           <CartIcon />
           <FavoriteButton />
+          <SignIn />
         </div>
         {/* navadmin */}
       </Container>
