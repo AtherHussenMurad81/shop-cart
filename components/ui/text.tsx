@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-export const Title = ({
+const Title = ({
   children,
   className,
 }: {
@@ -18,4 +18,27 @@ export const Title = ({
     </h2>
   );
 };
-// export { Title };
+const SubTitle = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <h3 className={cn("font-semibold text-gray-900 font-sans", className)}>
+      {children}
+    </h3>
+  );
+};
+
+const Subtext = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  return <p className={cn("text-gray-600 text-sm", className)}>{children}</p>;
+};
+export { Title, Subtext, SubTitle };
