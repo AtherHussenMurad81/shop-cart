@@ -1,4 +1,5 @@
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { it } from "node:test";
 import React from "react";
 
 interface ContactItemData {
@@ -39,9 +40,22 @@ const data: ContactItemData[] = [
 ];
 export const FooterTop = () => {
   return (
-    <div>
-      {data?.map((item) => (
-        <div></div>
+    <div className="grid grid-cols-2 lg:grid-cols-4 py-12 gap-8">
+      {data?.map((item, index) => (
+        <div
+          key={index}
+          className="flex items-center gap-3 group hover:bg-gray-50 p-4 transition-colors"
+        >
+          {item?.icon}
+          <div>
+            <h3 className="font-semibold text-gray-900 group group-hover:text-black">
+              {item?.title}
+            </h3>
+            <p className="text-gray-600 text-sm mt-1 group-hover:text-gray-900 hoverEffect">
+              {item?.subtitle}
+            </p>
+          </div>
+        </div>
       ))}
     </div>
   );
