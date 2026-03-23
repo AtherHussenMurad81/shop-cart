@@ -34,9 +34,11 @@ export default function RootLayout({
         )}
       >
         <body className="min-h-full flex flex-col">
-          <Header />
-          {children}
-          <Footer />
+          <div className="flex flex-col">
+            <Header />
+            <main className="">{children}</main>
+            <Footer />
+          </div>
         </body>
       </html>
     </ClerkProvider>
